@@ -13,9 +13,14 @@ contract Floppy is ERC20, ERC20Burnable, Ownable {
         Ownable(initialOwner)
     {
         _mint(msg.sender, cap);
+        transferOwnership(msg.sender);
     }
 
     function mint(address to, uint256 amount) public onlyOwner {
+        require(
+            ERC20.totalSupply() + amount <= cap,
+            "Floppy: cap exceeded"
+        );
         _mint(to, amount);
     }
 }

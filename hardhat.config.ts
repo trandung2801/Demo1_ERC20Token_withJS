@@ -1,5 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
-require('dotenv').config();
+import "@nomicfoundation/hardhat-toolbox";
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname + "/.env" });
 /** @type import('hardhat/config').HardhatUserConfig */
 
 module.exports = {
@@ -7,10 +9,10 @@ module.exports = {
   networks: {
     bsctest: {
       url: "https://bsc-testnet.bnbchain.org",
-      accounts: [process.env.PRIV_KEY]
-    }
+      accounts: [process.env.PRIV_KEY],
+    },
   },
   etherscan: {
-    apiKey: process.env.API_KEY
-  }
+    apiKey: process.env.API_KEY,
+  },
 };
